@@ -1,0 +1,27 @@
+<div class="label">
+	<span>Entrada de Estoque</span>
+</div>
+
+<div class="container central">
+	<%= form_tag entry_amount_product_path(@product), method: :get do %>
+		<div class="form-group">
+			<%= label_tag :sku %>
+			<%= text_field_tag :sku, @product.sku, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= label_tag :nome %>
+			<%= text_field_tag :name, @product.name, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= label_tag :quantidade %>
+			<%= text_field_tag :amount, @product.amount, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= label_tag :entrada %>
+			<%= number_field_tag :entry, 0, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= button_to :salvar, nil, class: 'btn btn-success' %>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="label">
+	<span>Aniversariantes do Mês</span>
+</div>
+
+<div class="container-big">
+	<table class="table table-bordered">
+		<thead>
+			<th>Nome</th>
+			<th>Aniversario</th>
+			<th>Telefone</th>
+			<th>Email</th>
+		</thead>
+		<tbody>
+			<% @clients.each do |client| %>
+			<tr>
+				<td><%= client.name %></td>
+				<td><%= datebr(client.birthday) %></td>
+				<td><%= client.phone %></td>
+				<td><%= client.email %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
