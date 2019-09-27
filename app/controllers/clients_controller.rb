@@ -13,13 +13,21 @@ class ClientsController < ApplicationController
 
 	def create
 		client_params = params.require(:client).permit!
-		@client = Client.create client_params
+		@client = Client.new client_params
+		cpf_registred = Client.all.map{|c| c.cpf}
 
-		if @client.save
-			redirect_to clients_path, notice: 'Cliente Cadastrado com Sucesso!'
-		else
-			@message = 'Campos obrigatórios não preenchidos'
+		if cpf_registred.include?(@client.cpf)
+			@message = 'Não Cadastrado! CPF já existe!'
 			render :new
+		else
+			@client.name.upcase!
+			@client.save
+			if @client.save
+				redirect_to clients_path, notice: 'Cliente Cadastrado com Sucesso!'
+			else
+				@message = 'Campos obrigatórios não preenchidos'
+				render :new
+			end
 		end
 	end
 
@@ -60,9 +68,5 @@ class ClientsController < ApplicationController
 
 		def set_client
 			@client = Client.find(params[:id])
-		end
-
-		def set_message
-			@message = ''
 		end
 end

@@ -1,0 +1,47 @@
+<div class="label">
+	<span>Selecione o Cliente</span>
+</div>
+
+<div class="container-big">
+
+	<%= link_to 'cancelar venda', sale_path(@sale), method: :delete, class: 'btn btn-danger', data:{confirm: 'deseja cancelar a venda?'} %>
+	<input type="text" id="search" placeholder="buscar cliente" style="float: right; margin-bottom: 1em; width: 25%;" >
+
+	<table class="table table-bordered">
+		<thead>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Aniversário</th>
+			<th>CPF/RG</th>
+			<th>Telefone</th>
+			<th>Cidade</th>
+			<th></th>
+		</thead>
+		<tbody class="table-search">
+			<% @clients.each do |client| %>
+				<tr>
+					<td><%= client.id %></td>
+					<td><%= client.name %></td>
+					<td><%= datebr(client.birthday) %></td>
+					<td><%= client.cpf %></td>
+					<td><%= client.phone %></td>
+					<td><%= client.city %></td>
+					<td><%= link_to :selecionar, selection_sale_path(@sale, client.id), class: 'btn btn-primary' %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>	
+</div>
+
+<script type="text/javascript">
+$(function(){
+    $("#search").keyup(function(){
+        var texto = $(this).val();
+        $(".table-search tr").css("display", "table-row");
+        $(".table-search tr").each(function(){
+            if($(this).text().toUpperCase().indexOf(texto.toUpperCase()) < 0)
+   			$(this).css("display", "none");
+        });
+    });
+});
+</script>

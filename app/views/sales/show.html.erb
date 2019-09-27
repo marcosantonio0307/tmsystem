@@ -1,0 +1,57 @@
+<div class="label">
+	<span>Venda Nº <%= @sale.id %></span>
+</div>
+
+<div class="sale">
+
+	<div class="options">
+		<span><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></span>
+		<span><%= link_to :editar, edit_sale_path(@sale), class: 'btn btn-warning' %></span>
+		<span><%= link_to :deletar, sale_path(@sale), method: :delete, class: 'btn btn-danger', data:{confirm: 'deseja apagar a venda?'} %></span>
+		<% if @sale.status == 'pendente' %>
+			<span><%= link_to :recebi, pay_sale_path(@sale), class: 'btn btn-primary' %></span>
+		<% end %>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag :cliente %>
+		<%= text_field_tag :client, @sale.client.name, class: 'form-control', :disabled=>true %>
+	</div><br>
+
+	<div>
+		<table class="table table-bordered">
+			<thead>
+				<th>Produto</th>
+				<th>Quatidade</th>
+				<th>Valor</th>
+				<th>Desconto R$</th>
+				<th>Total</th>
+			</thead>
+			<% @items.each do |item| %> 
+				<tbody>
+					<tr>
+						<td><%= item.product.name %></td>
+						<td><%= item.amount %></td>
+						<td><%= number_to_currency item.product.price %></td>
+						<td><%= number_to_currency item.discount %>	</td>
+						<td><%= number_to_currency item.price %></td>
+					</tr>
+				</tbody>
+			<% end %>
+		</table>
+
+		<div style="padding-left: 70%; smargin-bottom: 2em;">
+			<span><%= label_tag :total %></span>
+			<span><%= text_field_tag :total, number_to_currency(@sale.total), :disabled=>true %></span>	
+		</div>
+	</div>
+
+	<%= form_for @sale do |f| %>
+		<div class="form-group">
+			<div>
+				<%= f.label :status %><br>
+				<%= f.text_field :status, :disabled=>true %>
+			</div><br>
+		</div>
+	<% end %>
+</div>

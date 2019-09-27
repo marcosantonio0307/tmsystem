@@ -1,0 +1,34 @@
+<div class="label">
+	<span>Vendas a Receber</span>
+</div>
+
+<div class="container-big">
+	<table class="table table-bordered">
+		<thead>
+			<th>id</th>
+			<th>data da venda</th>
+			<th>dias pendente</th>
+			<th>cliente</th>
+			<th>telefone</th>
+			<th>valor</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @sales.each do |sale| %>
+			<tr>
+				<td><%= sale.id %></td>
+				<td><%= datebr(sale.created_at) %></td>
+				<td><%= @today.day - sale.created_at.day %></td>
+				<td><%= sale.client.name %></td>
+				<td><%= sale.client.phone %></td>
+				<td><%= moneybr(sale.total) %></td>
+				<td><%= link_to 'ver', sale_path(sale), class: 'btn btn-primary' %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div style="float: right;">
+		<%= label_tag :total %>
+		<%= text_field_tag :total, moneybr(@total), :disabled=>true %>
+	</div>
+</div>

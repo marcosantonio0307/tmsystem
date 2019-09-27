@@ -1,0 +1,37 @@
+<div class="label">
+	<span>Venda Nº <%= @sale.id %></span>
+</div>
+
+<div class="sale">
+
+	<div class="form-group">
+		<%= label_tag :cliente %>
+		<%= text_field_tag :client, @sale.client.name, class: 'form-control', :disabled=>true %>
+	</div><br>
+
+	<div style="float: left; margin-bottom: 1em;">
+		<%= form_tag new_sale_item_path(@sale), method: :get do %>
+			<%= label_tag :sku %>
+			<%= text_field_tag :sku, nil %>
+			<%= button_to 'Incluir', nil, class: 'btn btn-primary' %>
+		<% end %>
+	</div>
+
+	<div style="float: right; margin-bottom: 0.5em;">
+			<%= link_to 'Buscar Produto', search_item_path(@sale), class: 'btn btn-success' %>
+	</div><br>
+
+	<%= render 'items' %>
+
+	<%= form_for @sale do |f| %>
+		<div class="form-group">
+			<div>
+				<%= f.label :status %><br>
+				<%= f.select_tag :status, options_for_select(['pago', 'pendente']) %>
+			</div><br>
+			
+			<%= f.submit :salvar, class: 'btn btn-success' %>
+			<%= link_to 'cancelar', sale_path(@sale), method: :delete, class: 'btn btn-danger', data:{confirm: 'deseja cancelar a venda?'} %>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,51 @@
+<div class="label">
+	<span>Selecione o Produto</span>
+</div>
+
+<div class="container-big">
+	<input type="text" id="search" placeholder="Buscar Produto" style="margin-bottom: 1em; width: 40%; margin-left: 30%;">
+	<table class="table table-bordered" >
+		<thead>
+			<th>Id</th>
+			<th>SKU</th>
+			<th>Nome</th>
+			<th>Quantidade</th>
+			<th>Custo</th>
+			<th>Preço</th>
+			<th>Categoria</th>
+			<th></th>
+		</thead>
+		<tbody id="table">
+			<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= product.sku %></td>
+				<td><%= product.name %></td>
+				<td><%= product.amount %></td>
+				<td><%= number_to_currency product.cost %></td>
+				<td><%= number_to_currency product.price %></td>
+				<td><%= product.category %></td>
+				<td>
+					<%= form_tag new_sale_item_path(@sale), method: :get do %>
+						<span class="hide-field"><%= text_field_tag :sku, product.sku %></span>
+						<span style="float: left;"><%= button_to :selecionar, nil, class: 'btn btn-primary' %></span>
+					<% end %>	
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+	    $("#search").keyup(function(){
+	        var texto = $(this).val();
+	        $("#table tr").css("display", "table-row");
+	        $("#table tr").each(function(){
+	            if($(this).text().toUpperCase().indexOf(texto.toUpperCase()) < 0)
+   				   $(this).css("display", "none");
+	        });
+	    });
+	});
+</script>

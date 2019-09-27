@@ -1,0 +1,26 @@
+<div class="label">
+	<span>Minhas Vendas</span>
+</div>
+
+<div class="container-big">
+	<table class="table table-bordered">
+		<thead>
+			<th>id</th>
+			<th>data</th>
+			<th>cliente</th>
+			<th>valor</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @sales.each do |sale| %>
+			<tr>
+				<td><%= sale.id %></td>
+				<td><%= datebr(sale.created_at) %></td>
+				<td><%= sale.client.name %></td>
+				<td><%= moneybr(sale.total) %></td>
+				<td><%= link_to 'ver', sale_path(sale), class: 'btn btn-primary' %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

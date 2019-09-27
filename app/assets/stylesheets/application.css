@@ -239,6 +239,33 @@ label[for="bt_menu"] {
 	margin-bottom: 1.5em;
 }
 
+.buttons {
+	width: 130px;
+	text-align: center;
+}
+
+.btn-black {
+	width: 40%;
+	color: #F4DA72;
+	font-weight: bold;
+	background: #1c1c1c;
+	padding: 0.5em 1em;
+	margin-top: 2em;
+	margin-left: 30%;
+}
+
+.sale {
+	width: 70%;
+	margin: 7em auto;
+	padding: 1em 1.5em;
+	background: #fff5ee;
+	border-radius: 1em;
+}
+
+.hide-field input {
+	width: 10px;
+	visibility: hidden;
+}
 
 /* small screen */
 
