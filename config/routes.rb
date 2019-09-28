@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   get 'cashes/today' => 'cashes#today'
   get 'cashes/open' => 'cashes#open', as: :open_cash
 
+  get 'reports' => 'reports#index'
+  get 'reports/sales_report' => 'reports#sales_report'
+  get 'reports/report' => 'reports#report'
+
   resources :cashes, only:[:new, :index]
   resources :expenses, only:[:create, :index, :new, :edit, :update, :show, :destroy]
   resources :clients, only:[:new, :create, :index, :show, :edit, :update, :destroy]
