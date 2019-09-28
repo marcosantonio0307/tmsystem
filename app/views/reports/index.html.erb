@@ -1,0 +1,22 @@
+<div class="label">
+	<span><%= @title %></span>
+</div>
+
+<div class="container-big">
+	<%= form_tag reports_report_path, method: :get do %>
+		<div style="visibility: hidden;">
+			<%= text_field_tag :report, @report, class: 'form-control' %>
+		</div>
+		<div style="width: 30%; float: left; margin-left: 20%;">
+			<%= label_tag 'data inicial' %>
+			<%= date_field_tag :begin_date, nil, class: 'form-control' %>
+		</div>
+		<div style="width: 30%; float: left; margin-left: 2em;">
+			<%= label_tag 'data final' %>
+			<%= date_field_tag :end_date, nil, class: 'form-control' %>
+		</div>
+		<div style="width: 100%; float: left; margin-top: 2em; text-align: center;">
+			<%= submit_tag 'Gerar Relatório', class: 'btn btn-success' %>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,28 @@
+<div class="label">
+	<span><%= @title %></span>
+</div>
+
+<div class="container-big">
+	<p><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></p>
+	<table class="table table-bordered">
+		<thead>
+			<th>Nº da venda</th>
+			<th>Data</th>
+			<th>Cliente</th>
+			<th>Valor</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @sales.each do |sale| %>
+			<tr>
+				<td><%= sale.id %></td>
+				<td><%= datebr(sale.created_at) %></td>
+				<td><%= sale.client.name %></td>
+				<td><%= moneybr(sale.total) %></td>
+				<td class="buttons"><%= link_to :exibir, sale_path(sale), class: 'btn btn-primary' %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<p align="right"><b>Total: </b><%= text_field_tag :total, moneybr(@total), :disabled=>true %></p>
+</div>
