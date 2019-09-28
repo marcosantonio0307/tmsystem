@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sales_total: 9.99
+  expenses_total: 9.99
+  total: 9.99
+
+two:
+  sales_total: 9.99
+  expenses_total: 9.99
+  total: 9.99

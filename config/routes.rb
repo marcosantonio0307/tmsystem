@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   get 'expenses/debts' => 'expenses#debts'
   get 'expenses/:id/pay' => 'expenses#pay', as: :pay_expense
 
+  get 'cashes/today' => 'cashes#today'
+  get 'cashes/open' => 'cashes#open', as: :open_cash
+
+  resources :cashes, only:[:new, :index]
   resources :expenses, only:[:create, :index, :new, :edit, :update, :show, :destroy]
   resources :clients, only:[:new, :create, :index, :show, :edit, :update, :destroy]
   resources :products, only:[:index, :new, :create, :show, :edit, :update]

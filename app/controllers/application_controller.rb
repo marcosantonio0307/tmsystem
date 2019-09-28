@@ -11,6 +11,19 @@ class ApplicationController < ActionController::Base
 		end		
 	end
 
+	def filter_today(base)
+		today = Time.zone.now
+		filter = []
+		@total = 0
+		base.each do |b|
+			if datebr(b.created_at) == datebr(today)
+				filter << b
+				@total += b.total
+			end
+		end
+		base = filter		
+	end
+
 	private
 		def set_message
 			@message = ''
