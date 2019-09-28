@@ -1,0 +1,24 @@
+<div class="label">
+	<span>Caixas Fechados</span>
+</div>
+
+<div class="container-big">
+	<table class="table table-bordered">
+		<thead>
+			<th>data</th>
+			<th>entradas</th>
+			<th>saidas</th>
+			<th>total</th>
+		</thead>
+		<tbody>
+			<% @cashes.each do |cash| %>
+			<tr>
+				<td><%= datebr(cash.created_at) %></td>	
+				<td><%= moneybr(cash.sales_total) %></td>
+				<td><%= moneybr(cash.expenses_total) %></td>
+				<td><%= moneybr(cash.total) %></td>	
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

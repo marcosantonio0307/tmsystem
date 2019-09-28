@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_115119) do
+ActiveRecord::Schema.define(version: 2019_09_27_122340) do
+
+  create_table "cashes", force: :cascade do |t|
+    t.decimal "sales_total"
+    t.decimal "expenses_total"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"

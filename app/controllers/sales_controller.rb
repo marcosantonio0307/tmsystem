@@ -9,16 +9,7 @@ class SalesController < ApplicationController
 
 	def today
 		@sales = Sale.where(status: 'pago')
-		today = Time.zone.now
-		filter = []
-		@total = 0
-		@sales.each do |sale|
-			if datebr(sale.created_at) == datebr(today)
-				filter << sale
-				@total += sale.total
-			end
-		end
-		@sales = filter
+		@sales = filter_today(@sales)
 	end
 
 	def pending

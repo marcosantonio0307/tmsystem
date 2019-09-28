@@ -47,16 +47,7 @@ class ExpensesController < ApplicationController
 		@title = 'Despesas do dia'
 		@type = 'expenses'
 		@expenses = Expense.where(status: true)
-		today = Time.zone.now
-		filter = []
-		@total = 0
-		@expenses.each do |expense|
-			if datebr(expense.created_at) == datebr(today)
-				filter << expense
-				@total += expense.total
-			end
-		end
-		@expenses = filter
+		@expenses = filter_today(@expenses)
 
 		render :index
 	end

@@ -267,6 +267,38 @@ label[for="bt_menu"] {
 	visibility: hidden;
 }
 
+.box-cash {
+	width: 50%;
+	border: solid;
+	float: left;
+	margin-left: 10%;
+	background: #1c1c1c;
+	padding: 3em;
+}
+
+.box-cash h2 {
+	font-size: 1.5em;
+	width: 80%;
+	text-align: center;
+	margin-left: 10%;
+	padding: 0.7em;
+	border-radius: 1em;
+	font-weight: bold;
+	background: #F4DA71;
+}
+
+.box-cash-2 {
+	float: left;
+	width: 30%;
+	margin-left: 5%;
+	padding-top: 3em;
+}
+
+.box-cash-2 .btn {
+	font-size: 1.3em;
+	width: 50%;
+}
+
 /* small screen */
 
 @media(max-width: 800px) {
