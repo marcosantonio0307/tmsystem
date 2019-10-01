@@ -199,6 +199,12 @@ label[for="bt_menu"] {
 	margin: 0px auto;
 }
 
+.container-small {
+	width: 50%;
+	margin: 0px auto;
+	padding-left: 220px;
+}
+
 .black {
 	background: #222;
 	color: white;
@@ -297,6 +303,12 @@ label[for="bt_menu"] {
 .box-cash-2 .btn {
 	font-size: 1.3em;
 	width: 50%;
+}
+
+.user {
+	text-align: right;
+	padding-top: 1em;
+	padding-right: 1em;
 }
 
 /* small screen */

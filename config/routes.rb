@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   root 'home#index'
 
   get 'clients/report_birthday' => 'clients#report_birthday'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
 
   get 'reports' => 'reports#index'
   get 'reports/sales_report' => 'reports#sales_report'
+  get 'reports/expenses_report' => 'reports#expenses_report'
   get 'reports/report' => 'reports#report'
 
   resources :cashes, only:[:new, :index]

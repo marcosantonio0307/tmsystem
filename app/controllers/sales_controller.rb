@@ -32,6 +32,7 @@ class SalesController < ApplicationController
 		@sale.client_id = 1
 		@sale.total = 0
 		@sale.status = 'pago'
+		@sale.user = current_user
 		@sale.save
 
 		redirect_to select_client_sale_path(@sale)

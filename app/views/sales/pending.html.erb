@@ -8,6 +8,7 @@
 			<th>id</th>
 			<th>data da venda</th>
 			<th>dias pendente</th>
+			<th>vendedor</th>
 			<th>cliente</th>
 			<th>telefone</th>
 			<th>valor</th>
@@ -19,6 +20,7 @@
 				<td><%= sale.id %></td>
 				<td><%= datebr(sale.created_at) %></td>
 				<td><%= @today.day - sale.created_at.day %></td>
+				<td><%= sale.user.email %></td>
 				<td><%= sale.client.name %></td>
 				<td><%= sale.client.phone %></td>
 				<td><%= moneybr(sale.total) %></td>
