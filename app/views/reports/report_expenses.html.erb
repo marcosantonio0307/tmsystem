@@ -1,0 +1,32 @@
+<div class="label">
+	<span><%= @title %></span>
+</div>
+
+<div class="container-big">
+	<p><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></p>
+	<table class="table table-bordered">
+		<thead>
+			<th>Nº da despesa</th>
+			<th>Data</th>
+			<th>Usuario</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @expenses.each do |expense| %>
+			<tr>
+				<td><%= expense.id %></td>
+				<td><%= datebr(expense.created_at) %></td>
+				<td><%= expense.user.email %></td>
+				<td><%= expense.description %></td>
+				<td><%= moneybr(expense.total) %></td>
+				<td class="buttons"><%= link_to :editar, edit_expense_path(expense), class: 'btn btn-warning' %></td>
+				<td class="buttons"><%= link_to :excluir, expense_path(expense), method: :delete, class: 'btn btn-danger', data:{confirm: 'Deseja excluir esta despesa?'} %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<p align="right"><b>Total: </b><%= text_field_tag :total, moneybr(@total), :disabled=>true %></p>
+</div>

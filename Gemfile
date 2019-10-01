@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'twitter-bootstrap-rails'
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

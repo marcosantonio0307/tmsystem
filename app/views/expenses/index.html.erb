@@ -11,6 +11,8 @@
 
 	<table class="table table-bordered">
 		<thead>
+			<th>data</th>
+			<th>usuário</th>
 			<th>descrição</th>
 			<th>valor</th>
 			<% if @type == 'debts' %>
@@ -23,6 +25,8 @@
 		<tbody>
 			<% @expenses.each do |expense| %>
 			<tr>
+				<td><%= datebr(expense.created_at) %></td>
+				<td><%= expense.user.email %></td>
 				<td><%= expense.description %></td>
 				<td><%= moneybr(expense.total) %></td>
 				<% if @type == 'debts' %>

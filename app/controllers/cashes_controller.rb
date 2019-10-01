@@ -15,11 +15,11 @@ class CashesController < ApplicationController
 	def today
 		@sales = Sale.where(status: 'pago')
 		@sales = filter_today(@sales)
-		@total_sales = @sales.sum.total
+		@total_sales = @total
 
 		@expenses = Expense.where(status: true)
 		@expenses = filter_today(@expenses)
-		@total_expenses = @expenses.sum.total
+		@total_expenses = @total
 
 		@total_cash = @total_sales - @total_expenses
 	end
@@ -34,6 +34,6 @@ class CashesController < ApplicationController
 		def total_sales_day
 			@sales = Sale.where(status: 'pago')
 			@sales = filter_today(@sales)
-			@total_sales = @sales.sum.total
+			@total_sales = @total
 		end
 end

@@ -15,6 +15,7 @@ class ExpensesController < ApplicationController
 	def create
 		values = params.require(:expense).permit!
 		@expense = Expense.create values
+		@expense.update(user: current_user)
 		if @expense.status == true
 			redirect_to expenses_today_path, notice: 'Despesa cadastrada com sucesso!'
 		else

@@ -8,6 +8,7 @@
 		<thead>
 			<th>Nº da venda</th>
 			<th>Data</th>
+			<th>Vendedor</th>
 			<th>Cliente</th>
 			<th>Valor</th>
 			<th></th>
@@ -17,6 +18,7 @@
 			<tr>
 				<td><%= sale.id %></td>
 				<td><%= datebr(sale.created_at) %></td>
+				<td><%= sale.user.email %></td>
 				<td><%= sale.client.name %></td>
 				<td><%= moneybr(sale.total) %></td>
 				<td class="buttons"><%= link_to :exibir, sale_path(sale), class: 'btn btn-primary' %></td>

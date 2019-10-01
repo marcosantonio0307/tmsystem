@@ -7,6 +7,18 @@ class ReportsController < ApplicationController
 		@report = 'sales'
 		render :index
 	end
+	
+	def expenses_report
+		@title = 'Selecione o periodo das despesas'
+		@report = 'expenses'
+		render :index
+	end
+
+	def resume
+		@title = 'Selecione o periodo do resumo'
+		@report = 'resume'
+		render :index
+	end
 
 	def index
 
@@ -19,10 +31,19 @@ class ReportsController < ApplicationController
 
 		if report == 'sales'
 			@title = "Vendas entre #{begin_date} e #{end_date}"
-			@sales = Sale.all
+			@sales = Sale.where(status: 'pago')
 			@sales = filter_date(@sales, begin_date, end_date)
 			@total = @total_filter
 			render :report_sales
+		elsif report == 'expenses'
+			@title = "Despesas entre #{begin_date} e #{end_date}"
+			@expenses = Expense.where(status: true)
+			@expenses = filter_date(@expenses, begin_date, end_date)
+			@total = @total_filter
+			render :report_expenses
+		else
+			@title = "Resumo do periodo entre #{begin_date} e #{end_date}"
+			@
 		end
 	end
 
