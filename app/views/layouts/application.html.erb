@@ -33,7 +33,7 @@
 
         <nav class="menus"> <!-- Menu de Navegação -->
           <ul>
-
+            <% if signed_in? %>
             <li><a href="">Clientes</a>
               <ul>
                 <li><%= link_to "Novo Cliente", new_client_path %></li>
@@ -71,11 +71,11 @@
             </li>
             <li><a href="">Usuários</a>
               <ul>
-                <li><%= link_to 'Alterar Senha' %></li>
+                <li><%= link_to 'Alterar Senha', edit_user_path(current_user) %></li>
               </ul>
             </li>
+            <% end %>
           </ul>
-
         </nav> <!-- fim do Menu -->
       </div>
 
