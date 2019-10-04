@@ -305,6 +305,41 @@ label[for="bt_menu"] {
 	width: 50%;
 }
 
+.box-resume {
+	width: 33.33%;
+	float: left;
+	text-align: justify;
+	background: #1c1c1c;
+	color: #fff;
+	height: 230px;
+	padding-top: 1em;
+	padding-left: 5em;
+}
+
+.box-report-salesman {
+	width: 80%;
+	margin: 4em auto;
+	background: #1c1c1c;
+	padding: 1em;
+	border-radius: 1em;
+}
+
+.box-report-salesman p {
+	text-align: center;
+	background: #F4DA71;
+	font-weight: bold;
+	font-size: 1.3em;
+	width: 80%;
+	margin: 1em auto;
+	padding: 0.5em;
+	border-radius: 1em;
+}
+
+.liq {
+	background: #F4DA71;
+	color: black;
+}
+
 .user {
 	text-align: right;
 	padding-top: 1em;

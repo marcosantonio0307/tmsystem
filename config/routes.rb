@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get 'reports' => 'reports#index'
   get 'reports/sales_report' => 'reports#sales_report'
   get 'reports/expenses_report' => 'reports#expenses_report'
+  get 'reports/resume_report' => 'reports#resume_report'
+  get 'reports/inventory_report' => 'reports#inventory_report'
+  get 'reports/amount_report' => 'reports#amount_report'
+  get 'reports/salesman_report' => 'reports#salesman_report'
   get 'reports/report' => 'reports#report'
 
   resources :cashes, only:[:new, :index]

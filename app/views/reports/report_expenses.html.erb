@@ -3,7 +3,8 @@
 </div>
 
 <div class="container-big">
-	<p><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></p>
+	<span style="float: left;"><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></span>
+	<span style="float: right; margin-bottom: 1em;"><b>Total: </b><%= text_field_tag :total, moneybr(@total), :disabled=>true %></span>
 	<table class="table table-bordered">
 		<thead>
 			<th>Nº da despesa</th>
@@ -28,5 +29,5 @@
 			<% end %>
 		</tbody>
 	</table>
-	<p align="right"><b>Total: </b><%= text_field_tag :total, moneybr(@total), :disabled=>true %></p>
+	
 </div>

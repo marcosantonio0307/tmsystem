@@ -14,10 +14,28 @@ class ReportsController < ApplicationController
 		render :index
 	end
 
-	def resume
+	def resume_report
 		@title = 'Selecione o periodo do resumo'
 		@report = 'resume'
 		render :index
+	end
+
+	def inventory_report
+		@title = 'Selecione o periodo do inventario'
+		@report = 'inventory'
+		render :index
+	end
+
+	def salesman_report
+		@title = 'Selecione o periodo das vendas por vendedor'
+		@report = 'salesman'
+		render :index
+	end
+
+	def amount_report
+		@title = 'Produtos com menor até os com maior quantidade'
+		@products = Product.order :amount
+		render :report_amount
 	end
 
 	def index
@@ -41,9 +59,35 @@ class ReportsController < ApplicationController
 			@expenses = filter_date(@expenses, begin_date, end_date)
 			@total = @total_filter
 			render :report_expenses
-		else
+		elsif report == 'resume'
 			@title = "Resumo do periodo entre #{begin_date} e #{end_date}"
-			@
+			@sales = Sale.where(status: 'pago')
+			@sales = filter_date(@sales, begin_date, end_date)
+			@total_sales = @total_filter
+			@expenses = Expense.where(status: true)
+			@expenses = filter_date(@expenses, begin_date, end_date)
+			@total_expenses = @total_filter
+			@total_resume = @total_sales - @total_expenses
+			render :report_resume
+		elsif report == 'inventory'
+			@title = "Inventario de movimentação entre #{begin_date} e #{end_date}"
+			sales = Sale.where(status: 'pago')
+			sales = filter_date(sales, begin_date, end_date)
+			@products = []
+			sales.each do |sale|
+				sale.item.each do |item|
+					unless @products.include? item.product
+						@products << item.product
+					end	
+				end
+			end
+			render :report_inventory
+		elsif report == 'salesman'
+			@title = "Vendas por vendedor entre #{begin_date} e #{end_date}"
+			@salesman = User.all
+			@sales = Sale.where(status: 'pago')
+			@sales = filter_date(@sales, begin_date, end_date)
+			render :report_salesman
 		end
 	end
 
