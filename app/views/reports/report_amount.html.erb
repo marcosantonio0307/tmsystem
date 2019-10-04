@@ -1,0 +1,33 @@
+<div class="label">
+	<span><%= @title %></span>
+</div>
+
+<div class="container-big">
+	<p style="float: left;"><%= link_to :voltar, root_path, class: 'btn btn-default' %></p>
+	<table class="table table-bordered" >
+		<thead>
+			<th>Id</th>
+			<th>SKU</th>
+			<th>Nome</th>
+			<th>Quantidade</th>
+			<th>Custo</th>
+			<th>Preço</th>
+			<th>Categoria</th>
+			<th></th>
+		</thead>
+		<tbody id="table">
+			<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= product.sku %></td>
+				<td><%= product.name %></td>
+				<td><%= product.amount %></td>
+				<td><%= number_to_currency product.cost %></td>
+				<td><%= number_to_currency product.price %></td>
+				<td><%= product.category %></td>
+				<td><%= link_to :ver, product_path(product), class: 'btn btn-primary' %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -3,6 +3,7 @@
 </div>
 
 <div class="container-big">
+	<input type="text" id="search" placeholder="Buscar por Data" style="float: right; margin-bottom: 1em;">
 	<table class="table table-bordered">
 		<thead>
 			<th>data</th>
@@ -10,7 +11,7 @@
 			<th>saidas</th>
 			<th>total</th>
 		</thead>
-		<tbody>
+		<tbody id="table">
 			<% @cashes.each do |cash| %>
 			<tr>
 				<td><%= datebr(cash.created_at) %></td>	
@@ -22,3 +23,16 @@
 		</tbody>
 	</table>
 </div>
+
+<script type="text/javascript">
+	$(function(){
+	    $("#search").keyup(function(){
+	        var texto = $(this).val();
+	        $("#table tr").css("display", "table-row");
+	        $("#table tr").each(function(){
+	            if($(this).text().toUpperCase().indexOf(texto.toUpperCase()) < 0)
+   				   $(this).css("display", "none");
+	        });
+	    });
+	});
+</script>

@@ -5,6 +5,11 @@
 <div class="container central options">
 	<span><%= link_to 'todos clientes', clients_path, class: 'btn btn-default' %></span>
 	<span><%= link_to :editar, edit_client_path(@client), class: 'btn btn-warning' %></span>
+	<span style="float: right;">
+		<% if @client.sale.last != nil %>
+			<b>Ultima compra: <%= datebr(@client.sale.last.created_at) %></b>
+		<% end %>
+	</span>
 </div>
 
 <div class="container central">

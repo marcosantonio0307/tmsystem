@@ -1,0 +1,21 @@
+<div class="label">
+	<span><%= @title %></span>
+</div>
+
+<div class="container-big" style="float: left;">
+	<% @salesman.each do |user| %>
+		<div class="box-report-salesman">
+			<p>Vendedor: <%= user.email %></p>
+			<% list = [] %>
+			<% total = 0 %>
+			<% user.sale.each do |sale| %>
+				<% if @sales.include? sale %>
+					<% list << sale %>
+					<% total += sale.total %>
+				<% end %>
+			<% end %>
+			<p>Nº de Vendas: <%= list.count %></p>
+			<p>Total: <%= moneybr(total) %></p>
+		</div>
+	<% end %>
+</div>
