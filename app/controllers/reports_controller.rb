@@ -46,21 +46,22 @@ class ReportsController < ApplicationController
 		report = params[:report]
 		begin_date = params[:begin_date]
 		end_date = params[:end_date]
+		period = "#{begin_date.split("-").reverse.join("-")} e #{end_date.split("-").reverse.join("-")}"
 
 		if report == 'sales'
-			@title = "Vendas entre #{begin_date} e #{end_date}"
+			@title = "Vendas entre #{period}"
 			@sales = Sale.where(status: 'pago')
 			@sales = filter_date(@sales, begin_date, end_date)
 			@total = @total_filter
 			render :report_sales
 		elsif report == 'expenses'
-			@title = "Despesas entre #{begin_date} e #{end_date}"
+			@title = "Despesas entre #{period}"
 			@expenses = Expense.where(status: true)
 			@expenses = filter_date(@expenses, begin_date, end_date)
 			@total = @total_filter
 			render :report_expenses
 		elsif report == 'resume'
-			@title = "Resumo do periodo entre #{begin_date} e #{end_date}"
+			@title = "Resumo do periodo entre #{period}"
 			@sales = Sale.where(status: 'pago')
 			@sales = filter_date(@sales, begin_date, end_date)
 			@total_sales = @total_filter
@@ -70,7 +71,7 @@ class ReportsController < ApplicationController
 			@total_resume = @total_sales - @total_expenses
 			render :report_resume
 		elsif report == 'inventory'
-			@title = "Inventario de movimentação entre #{begin_date} e #{end_date}"
+			@title = "Inventario de movimentação entre #{period}"
 			sales = Sale.where(status: 'pago')
 			sales = filter_date(sales, begin_date, end_date)
 			@products = []
@@ -83,7 +84,7 @@ class ReportsController < ApplicationController
 			end
 			render :report_inventory
 		elsif report == 'salesman'
-			@title = "Vendas por vendedor entre #{begin_date} e #{end_date}"
+			@title = "Vendas por vendedor entre #{period}"
 			@salesman = User.all
 			@sales = Sale.where(status: 'pago')
 			@sales = filter_date(@sales, begin_date, end_date)
