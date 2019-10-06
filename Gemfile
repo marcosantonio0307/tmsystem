@@ -19,6 +19,9 @@ gem 'twitter-bootstrap-rails'
 gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'devise'
+# pdf generate
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

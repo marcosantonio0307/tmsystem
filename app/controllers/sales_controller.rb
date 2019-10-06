@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
 
 	before_action :set_message
-	before_action :set_sale, only:[:select_client, :selection, :edit, :update, :pay]
+	before_action :set_sale, only:[:select_client, :selection, :edit, :update, :pay, :confirm_print]
 
 	def index
 		@sales = Sale.all
@@ -57,7 +57,11 @@ class SalesController < ApplicationController
 		status = params[:status]
 		@sale.update(status: status)
 
-		redirect_to sales_today_path, notice: 'Venda Salva com Sucesso!'
+		redirect_to confirm_print_sale_path(@sale), notice: 'Venda Salva com Sucesso!'
+	end
+
+	def confirm_print
+	
 	end
 
 	def pay
@@ -92,6 +96,11 @@ class SalesController < ApplicationController
 	def show
 		@sale = Sale.find(params[:id])
 		@items = Item.where(sale_id: @sale.id)
+
+		respond_to do |format|
+			format.html
+			format.pdf {render template: 'sales/print', pdf: 'print'}
+		end
 	end
 
 	private

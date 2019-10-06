@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Venda</title>
+	<style type="text/css">
+		.ticket {
+			width: 300px;
+		}
+	</style>
+	<meta charset="utf-8">
+</head>
+<body>
+	
+	<div class="ticket">
+		<div align="center">
+			<p>= Audaz Multimarcas =</p>
+			<p>Lgo Manoel Agostinho de Castro 714 </p>
+			<p>Centro, São Raimundo Nonato-PI</p> 
+			<p>CNPJ: 30.342.515/0001-30</p>
+			<p>Telefone: 89 98137-8024</p>
+		</div>
+		<p>================================</p>
+		<br>
+		<p>Venda: <%= @sale.id %></p>
+		<p>Cliente: <%= @sale.client.name %></p>
+		<p>CPF/RG: <%= @sale.client.cpf %></p>
+		<p>Produtos:</p>
+		<% @sale.item.each do |item| %>
+			<p><%= item.product.name %> - <%= item.amount %> - <%= number_to_currency(item.price) %></p>
+		<% end %>
+		<br>
+		<p>Total: <%= number_to_currency(@sale.total) %></p>
+		<p>================================</p>
+		<div align="center">
+			<p>Vendedor: <%= @sale.user.email %></p>
+			<p>Data: <%= @sale.created_at.strftime("%d/%m/%Y - %H:%M") %>h</p>
+			<p>São Raimundo Nonato - PI</p>
+		</div>
+		
+	</div>
+	
+</body>
+</html>

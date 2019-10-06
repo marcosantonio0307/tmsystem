@@ -1,0 +1,9 @@
+<div class="label">
+	<span>Venda: <%= @sale.id %></span>
+</div>
+
+<div style="text-align: center;">
+	<h2>Deseja imprimir o cupom?</h2><br>
+	<span style="margin-right: 1em;"><%= link_to :SIM, ("/sales/#{@sale.id}.pdf"), class: 'btn btn-success' %></span>
+	<span><%= link_to :NAO, sales_today_path, class: 'btn btn-danger' %></span>
+</div>
