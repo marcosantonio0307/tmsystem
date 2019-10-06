@@ -82,6 +82,7 @@ class ReportsController < ApplicationController
 					end	
 				end
 			end
+
 			render :report_inventory
 		elsif report == 'salesman'
 			@title = "Vendas por vendedor entre #{period}"

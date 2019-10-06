@@ -6,10 +6,11 @@
 
 	<div class="options">
 		<span><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></span>
-		<span><%= link_to :editar, edit_sale_path(@sale), class: 'btn btn-warning' %></span>
-		<span><%= link_to :deletar, sale_path(@sale), method: :delete, class: 'btn btn-danger', data:{confirm: 'deseja apagar a venda?'} %></span>
+		<span><%= link_to :Editar, edit_sale_path(@sale), class: 'btn btn-warning' %></span>
+		<span><%= link_to :Deletar, sale_path(@sale), method: :delete, class: 'btn btn-danger', data:{confirm: 'deseja apagar a venda?'} %></span>
+		<span><%= link_to (image_tag 'imprimir.png', :width=> '50px'), ("/sales/#{@sale.id}.pdf") %></span>
 		<% if @sale.status == 'pendente' %>
-			<span><%= link_to :recebi, pay_sale_path(@sale), class: 'btn btn-primary' %></span>
+			<span><%= link_to :Recebi, pay_sale_path(@sale), class: 'btn btn-primary' %></span>
 		<% end %>
 	</div>
 

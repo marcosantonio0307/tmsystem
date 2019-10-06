@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'sales/:id/selection/:client_id' => 'sales#selection', as: :selection_sale
   get 'sales/:sale_id/search_item' => 'sales#search_item', as: :search_item
   post 'sales/:sale_id/items/:id' => 'items#add', as: :add_sale_item
+  get 'sales/:id/confirm_print' => 'sales#confirm_print', as: :confirm_print_sale
   get 'sales/today' => 'sales#today'
   get 'sales/pending' => 'sales#pending'
   get 'sales/:id/pay' => 'sales#pay', as: :pay_sale
