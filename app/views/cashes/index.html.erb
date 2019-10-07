@@ -7,6 +7,7 @@
 	<table class="table table-bordered">
 		<thead>
 			<th>data</th>
+			<th>valor inicio</th>
 			<th>entradas</th>
 			<th>saidas</th>
 			<th>total</th>
@@ -15,9 +16,10 @@
 			<% @cashes.each do |cash| %>
 			<tr>
 				<td><%= datebr(cash.created_at) %></td>	
+				<td><%= moneybr(cash.start) %></td>
 				<td><%= moneybr(cash.sales_total) %></td>
 				<td><%= moneybr(cash.expenses_total) %></td>
-				<td><%= moneybr(cash.total) %></td>	
+				<td><%= moneybr(cash.total) %></td>
 			</tr>
 			<% end %>
 		</tbody>

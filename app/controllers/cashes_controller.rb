@@ -8,7 +8,8 @@ class CashesController < ApplicationController
 
 	def new
 		today
-		@cash = Cash.create(sales_total: @total_sales, expenses_total: @total_expenses, total: @total_cash)
+		next_cash = params[:next]
+		@cash = Cash.create(start: @start, sales_total: @total_sales, expenses_total: @total_expenses, total: @total_cash, next: next_cash)
 		redirect_to cashes_path, notice: 'Caixa fechado com sucesso!'
 	end
 
@@ -21,7 +22,14 @@ class CashesController < ApplicationController
 		@expenses = filter_today(@expenses)
 		@total_expenses = @total
 
-		@total_cash = @total_sales - @total_expenses
+		cash_last = Cash.last
+		if cash_last.next == nil
+			@start = 0
+		else
+			@start = cash_last.next
+		end
+
+		@total_cash = (@start + @total_sales) - @total_expenses
 	end
 
 	def open
