@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_024529) do
+ActiveRecord::Schema.define(version: 2019_10_07_032910) do
 
   create_table "cashes", force: :cascade do |t|
     t.decimal "sales_total"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_10_01_024529) do
     t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "next"
+    t.decimal "start"
   end
 
   create_table "clients", force: :cascade do |t|

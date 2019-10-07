@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'expenses/:id/pay' => 'expenses#pay', as: :pay_expense
 
   get 'cashes/today' => 'cashes#today'
+  get 'cashes/close' => 'cashes#close'
   get 'cashes/open' => 'cashes#open', as: :open_cash
 
   get 'reports' => 'reports#index'

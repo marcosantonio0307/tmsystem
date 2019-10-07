@@ -3,6 +3,7 @@
 </div>
 
 <div class="box-cash">
+	<h2>Inicio: <%= moneybr(@start) %></h2>
 	<h2>Entradas: <%= moneybr(@total_sales) %></h2>
 	<h2>Saídas: <%= moneybr(@total_expenses) %></h2>
 	<h2>Total: <%= moneybr(@total_cash) %></h2>
@@ -12,7 +13,7 @@
 		<p><%= link_to 'reabrir caixa', open_cash_path, class: 'btn btn-default', data:{confirm: 'Deseja reabrir o caixa?'} %></p>
 	<% end %>
 	<% if Cash.last == nil || datebr(Cash.last.created_at) != datebr(Time.zone.now) %>
-		<p><%= link_to 'fechar caixa', new_cash_path, class: 'btn btn-success', data:{confirm: 'Fechar caixa do dia? Obs: Caixa deve ser fechado somentes ao fim do expediente!'} %></p>
+		<p><%= link_to 'fechar caixa', cashes_close_path, class: 'btn btn-success', data:{confirm: 'Fechar caixa do dia? Obs: Caixa deve ser fechado somentes ao fim do expediente!'} %></p>
 	<% end %>
 	<p><%= link_to 'vendas do dia', sales_today_path, class: 'btn btn-primary' %></p>
 	<p><%= link_to 'despesas do dia', expenses_today_path, class: 'btn btn-warning' %></p>
