@@ -23,7 +23,9 @@ class CashesController < ApplicationController
 		@total_expenses = @total
 
 		cash_last = Cash.last
-		if cash_last.next == nil
+		if cash_last == nil
+			@start = 0
+		elsif cash.last.next == nil
 			@start = 0
 		else
 			@start = cash_last.next
